@@ -3,6 +3,7 @@ from flask_login import LoginManager, login_user, logout_user, login_required, c
 from models import db, User, Tag, Todo
 from utils.email import send_reminder_email
 from datetime import datetime
+from sqlalchemy import text    # ← THIS WAS MISSING! ADD IT!
 import os
 import bcrypt
 
@@ -42,6 +43,7 @@ with app.app_context():
             db.session.add(Tag(name=t[0], color=t[1]))
         db.session.commit()
 
+
 @app.route('/')
 @login_required
 def index():
@@ -49,7 +51,14 @@ def index():
     base = Todo.query.filter_by(user_id=current_user.id)
     if q:
         base = base.filter(Todo.text.ilike(f'%{q}%'))
-    todos = base.order_by(Todo.complete.asc(), db.func.coalesce(Todo.due_date, '9999-12-31'), Todo.id.desc()).all()
+
+    # FIXED: use date literal instead of string
+    todos = base.order_by(
+        Todo.complete.asc(),
+        db.func.coalesce(Todo.due_date, text("'9999-12-31'::date"))
+        Todo.id.desc()
+    ).all()
+
     tags = Tag.query.all()
     return render_template('index.html', todos=todos, tags=tags)
 
