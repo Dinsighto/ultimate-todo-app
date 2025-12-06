@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: ultimate-todo-web
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      PYTHON_VERSION: 3.11.9
+      SECRET_KEY: "change-this-to-your-own-secret"
+
+  - type: worker
+    name: email-reminders
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python scheduler.py

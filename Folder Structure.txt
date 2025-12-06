@@ -1,0 +1,19 @@
+ultimate-todo-app/
+├── app.py
+├── models.py
+├── scheduler.py
+├── requirements.txt
+├── render.yaml
+├── Procfile  (for gunicorn)
+├── static/
+│   ├── style.css
+│   ├── script.js
+│   └── manifest.json
+├── templates/
+│   ├── base.html
+│   ├── index.html
+│   ├── calendar.html
+│   ├── login.html
+│   └── register.html
+└── utils/
+    └── email.py

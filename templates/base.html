@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Ultimate Todo{% endblock %}</title>
+    <link rel="manifest" href="/static/manifest.json">
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/script.js" defer></script>
+    <meta name="theme-color" content="#3498db">
+</head>
+<body>
+    <nav class="navbar">
+        {% if current_user.is_authenticated %}
+            <span>{{ current_user.username }}</span> |
+            <a href="/">List</a> | <a href="/calendar">Calendar</a> | <a href="/logout">Logout</a>
+        {% else %}
+            <a href="/login">Login</a> | <a href="/register">Register</a>
+        {% endif %}
+        <button onclick="toggleTheme()">Toggle Dark Mode</button>
+    </nav>
+
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ 'success' if category == 'success' else 'error' }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>My Todos</h1>
+
+<!-- Search & Controls -->
+<div class="controls">
+    <input type="text" id="search" placeholder="Search todos..." oninput="filterTodos()">
+    <a href="/calendar">📅 Calendar</a>
+</div>
+
+<!-- Add Form -->
+<form method="POST" action="/add" class="add-form">
+    <input type="text" name="text" placeholder="New todo..." required>
+    <input type="date" name="due_date">
+    <select name="tags" multiple>
+        {% for tag in tags %}
+            <option value="{{ tag.id }}">{{ tag.name }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Add</button>
+</form>
+
+<!-- Todos List -->
+<ul id="todo-list" class="todo-list">
+    {% for todo in todos %}
+    <li class="todo-item {% if todo.complete %}complete{% endif %}">
+        <div class="todo-content">
+            <span class="todo-text">{{ todo.text }}</span>
+            {% if todo.due_date %}
+                <span class="due-badge {% if todo.is_overdue() %}overdue{% elif todo.is_due_today() %}today{% endif %}">
+                    Due {{ todo.due_date.strftime('%b %d') }}
+                </span>
+            {% endif %}
+            <div class="tags">
+                {% for tag in todo.tags %}
+                    <span class="tag" style="background-color: {{ tag.color }};">{{ tag.name }}</span>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="todo-actions">
+            {% if not todo.complete %}
+                <a href="/complete/{{ todo.id }}">✓ Done</a>
+            {% endif %}
+            <a href="/delete/{{ todo.id }}" onclick="return confirm('Delete?')">🗑 Delete</a>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+
+<script>
+    function filterTodos() {
+        const query = document.getElementById('search').value.toLowerCase();
+        document.querySelectorAll('.todo-item').forEach(item => {
+            const text = item.querySelector('.todo-text').textContent.toLowerCase();
+            item.style.display = text.includes(query) ? 'block' : 'none';
+        });
+    }
+</script>
+{% endblock %}

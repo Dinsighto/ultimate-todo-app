@@ -1,0 +1,16 @@
+{
+    "name": "Ultimate Todo App",
+    "short_name": "Todo",
+    "description": "Advanced todo app with tags, calendar & reminders",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#3498db",
+    "icons": [
+        {
+            "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiBmaWxsPSIjMzk5OGRiIi8+CjxwYXRoIGQ9Ik0xMjggNjRIMTYwVjExMkgyNTZWMTRoLTMyVjIwOEgyNTZWMjQ4SDE2MFYyMDhIMTkyVjI0OEgxMjhWMjA4SDY0VjI0OEMyOC44IDMyMCAyNCAxOTUuMiAyNCAxNjBTMjguOCA0OCA2NCAzMlY2NEg5NlYxNkgxMjhWNjR6IiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K",
+            "sizes": "192x192",
+            "type": "image/svg+xml"
+        }
+    ]
+}
