@@ -9,14 +9,17 @@ import bcrypt
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'dev-secret-change-me')
 
-# DB Config (Render Postgres or local SQLite)
+# DATABASE CONFIG – CRITICAL FIX FOR psycopg3
 db_url = os.environ.get('DATABASE_URL')
+
 if db_url:
-    # Fix for psycopg3: Use postgresql+psycopg dialect (not default psycopg2)
-    app.config['SQLALCHEMY_DATABASE_URI'] = db_url.replace('postgres://', 'postgresql+psycopg://')
+    # Force SQLAlchemy to use psycopg3 driver (not psycopg2!)
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_url.replace(
+        'postgres://', 'postgresql+psycopg://', 1
+    )
 else:
+    # Local dev fallback
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
 login_manager = LoginManager(app)
