@@ -67,8 +67,6 @@ Resend (free email delivery)
 FullCalendar.js
 Vanilla JavaScript & CSS (no heavy frameworks)
 
-Credits
+### Credits
 Professionally crafted in December 2025 through a collaborative vibe-coding session between Abdelrhman Mohamdeen and Grok (xAI).
 Inspired by the pursuit of powerful, accessible tools without subscription barriers.
-
-⭐ Star this repository if you appreciate high-quality, cost-free open-source software.
