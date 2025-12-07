@@ -33,8 +33,6 @@ A full-featured, multi-user todo application built with a clean, modern vibe-cod
 
 6. (Recommended) Create a **Background Worker** → Command: `python scheduler.py` → add the same environment variables for email reminders
 
-Your professional-grade todo app is now live and fully operational at no cost.
-
 ### Project Structure
 ultimate-todo-app/
 ├── app.py              → Core Flask application and routing
