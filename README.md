@@ -34,6 +34,8 @@ A full-featured, multi-user todo application built with a clean, modern vibe-cod
 6. (Recommended) Create a **Background Worker** → Command: `python scheduler.py` → add the same environment variables for email reminders
 
 ### Project Structure
+
+```text
 ultimate-todo-app/
 ├── app.py              → Core Flask application and routing
 ├── models.py           → SQLAlchemy models (User, Todo, Tag)
@@ -53,7 +55,7 @@ ultimate-todo-app/
 │   ├── login.html      → Login form
 │   └── register.html   → Registration form
 └── utils/
-└── email.py        → Resend email integration module
+    └── email.py        → Resend email integration module
 
 Technology Stack
 Flask 3.x
