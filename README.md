@@ -57,21 +57,6 @@ ultimate-todo-app/
 └── utils/
 └── email.py        → Resend email integration module
 
-### Local Development (Windows)
-
-cd C:\path\to\ultimate-todo-app
-python -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
-
-set FLASK_APP=app.py
-set FLASK_ENV=development
-set DATABASE_URL=sqlite:///test.db
-set SECRET_KEY=dev-secret-2025
-
-flask run
-Open http://127.0.0.1:5000
-
 Technology Stack
 Flask 3.x
 Flask-Login & Flask-SQLAlchemy
