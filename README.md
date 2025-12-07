@@ -36,7 +36,7 @@ A full-featured, multi-user todo application built with a clean, modern vibe-cod
 ### Project Structure
 
 ```text
-ultimate-todo-app/
+todo-app/
 ├── app.py              → Core Flask application and routing
 ├── models.py           → SQLAlchemy models (User, Todo, Tag)
 ├── scheduler.py        → Background job for daily email reminders
