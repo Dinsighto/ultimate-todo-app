@@ -56,8 +56,9 @@ ultimate-todo-app/
 │   └── register.html   → Registration form
 └── utils/
     └── email.py        → Resend email integration module
+```
 
-Technology Stack
+### Technology Stack
 Flask 3.x
 Flask-Login & Flask-SQLAlchemy
 PostgreSQL (Render free tier)
